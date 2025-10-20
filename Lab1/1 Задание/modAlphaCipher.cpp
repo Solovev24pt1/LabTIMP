@@ -1,48 +1,47 @@
 #include "modAlphaCipher.h"
-#include <iostream>
-#include <algorithm>
-#include <stdexcept>
-#include <locale>
-#include <codecvt>
 using namespace std;
 
-modAlphaCipher::modAlphaCipher(const wstring& skey)
+modAlphaCipher::modAlphaCipher(const wstring& keyStr)
 {
-    for (unsigned i = 0; i < numAlpha.size(); i++) {
-        alphaNum[numAlpha[i]] = i;
+    for (unsigned k = 0; k < alphabet.size(); ++k) {
+        alphaIndex[alphabet[k]] = k;
     }
-    key = convert(skey);
-}
-vector<int> modAlphaCipher::convert(const wstring& s)
-{
-    vector<int> result;
-    for (auto c : s) {
-        result.push_back(alphaNum[c]);
-    }
-    return result;
-}
-wstring modAlphaCipher::convert(const vector<int>& v)
-{
-    wstring result;
-    for (auto i : v) {
-        result.push_back(numAlpha[i]);
-    }
-    return result;
-}
-wstring modAlphaCipher::encrypt(const wstring& open_text)
-{
-    vector<int> work = convert(open_text);
-    for (unsigned i = 0; i < work.size(); i++) {
-        work[i] = (work[i] + key[i % key.size()]) % numAlpha.size();
-    }
-    return convert(work);
+    keySeq = toNums(keyStr);
 }
 
-wstring modAlphaCipher::decrypt(const wstring& cipher_text)
+vector<int> modAlphaCipher::toNums(const wstring& s)
 {
-    vector<int> work = convert(cipher_text);
-    for (unsigned i = 0; i < work.size(); i++) {
-        work[i] = (work[i] + numAlpha.size() - key[i % key.size()]) % numAlpha.size();
+    vector<int> resultNums;
+    resultNums.reserve(s.size());
+    for (auto sym : s) {
+        resultNums.push_back(alphaIndex[sym]);
     }
-    return convert(work);
+    return resultNums;
+}
+
+wstring modAlphaCipher::toStr(const vector<int>& v)
+{
+    wstring resultStr;
+    resultStr.reserve(v.size());
+    for (auto idx : v) {
+        resultStr.push_back(alphabet[idx]);
+    }
+    return resultStr;
+}
+
+wstring modAlphaCipher::encrypt(const wstring& plain)
+{
+    vector<int> tmp = toNums(plain);
+    for (unsigned p = 0; p < tmp.size(); ++p) {
+        tmp[p] = (tmp[p] + keySeq[p % keySeq.size()]) % alphabet.size();
+    }
+    return toStr(tmp);
+}
+wstring modAlphaCipher::decrypt(const wstring& cipher)
+{
+    vector<int> tmp = toNums(cipher);
+    for (unsigned p = 0; p < tmp.size(); ++p) {
+        tmp[p] = (tmp[p] + alphabet.size() - keySeq[p % keySeq.size()]) % alphabet.size();
+    }
+    return toStr(tmp);
 }

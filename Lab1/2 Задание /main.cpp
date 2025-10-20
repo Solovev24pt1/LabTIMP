@@ -1,92 +1,118 @@
 #include <iostream>
 #include <locale>
 #include <codecvt>
-#include "table_cipher.h"
+#include <algorithm>
+#include <cwctype>
+#include <limits>
+#include <string>
+#include "table.h"
 using namespace std;
 
-bool isValid(const wstring& s)
+bool onlyCyrillic(const wstring& s)
 {
-    wstring russianAlphabet = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-    for (auto c : s) {
-        if (russianAlphabet.find(c) == wstring::npos) {
-            return false;
-        }
+    wstring ABC = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    for (auto ch : s) {
+        if (iswspace(ch)) continue;
+        if (ABC.find(ch) == wstring::npos) return false;
     }
     return true;
 }
-wstring toUpperRussian(const wstring& s)
+
+wstring toUpperCyr(const wstring& s)
 {
-    wstring result = s;
+    wstring res = s;
     wstring lower = L"абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
     wstring upper = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-    for (auto& c : result) {
+    for (auto& c : res) {
         size_t pos = lower.find(c);
-        if (pos != wstring::npos) {
-            c = upper[pos];
-        }
+        if (pos != wstring::npos) c = upper[pos];
     }
-    return result;
+    return res;
 }
 
-wstring stringToWstring(const string& str)
+wstring stripSpaces(const wstring& s)
 {
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
-    return converter.from_bytes(str);
+    wstring out;
+    out.reserve(s.size());
+    for (wchar_t ch : s)
+        if (!iswspace(ch))
+            out.push_back(ch);
+    return out;
 }
 
-string wstringToString(const wstring& wstr)
+wstring str8_to_w(const string& s)
 {
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
-    return converter.to_bytes(wstr);
+    wstring_convert<codecvt_utf8<wchar_t>> conv;
+    return conv.from_bytes(s);
+}
+
+string w_to_str8(const wstring& ws)
+{
+    wstring_convert<codecvt_utf8<wchar_t>> conv;
+    return conv.to_bytes(ws);
 }
 
 int main()
 {
     setlocale(LC_ALL, "ru_RU.UTF-8");
-    string key_input;
-    string text_input;
-    unsigned op;
-    cout << "=== Шифр табличной перестановки ===" << endl;
-    cout << "Шифр готов. Введите количество столбцов: ";
-    getline(cin, key_input);
+
+    string keyLine;
+    string msgLine;
+    unsigned action;
+
+    cout << "Введите число столбцов: ";
+    getline(cin, keyLine);
+
+    int cols = 0;
     try {
-        int key = stoi(key_input);
-        if (key <= 0) {
-            cerr << "Ключ недействителен!" << endl;
-            return 1;
-        }
-        cout << "Ключ загружен" << endl;
-        TableCipher cipher(key);
-        do {
-            cout << "Шифр готов. Выберите операцию (0-выход, 1-шифрование, 2-расшифрование): ";
-            cin >> op;
-            cin.ignore();
-            
-            if (op > 2) {
-                cout << "Неверная операция" << endl;
-            } else if (op > 0) {
-                cout << "Введите текст: ";
-                getline(cin, text_input);
-                wstring text = stringToWstring(text_input);
-                text = toUpperRussian(text);
-                
-                if (isValid(text)) {
-                    if (op == 1) {
-                        wstring encrypted = cipher.encrypt(text);
-                        cout << "Зашифрованный текст: " << wstringToString(encrypted) << endl;
-                    } else {
-                        wstring decrypted = cipher.decrypt(text);
-                        cout << "Расшифрованный текст: " << wstringToString(decrypted) << endl;
-                    }
-                } else {
-                    cout << "Используйте только русские буквы." << endl;
-                }
-            }
-        } while (op != 0);
-        
-    } catch (const exception& e) {
-        cerr << "Ошибка: " << e.what() << endl;
+        cols = stoi(keyLine);
+    } catch (...) {
+        cerr << "Некорректное число столбцов." << endl;
         return 1;
     }
+    if (cols <= 0) {
+        cerr << "Число столбцов должно быть положительным." << endl;
+        return 1;
+    }
+    
+    Table cipher(cols);
+    cout << "Режимы: 1 — шифрование, 2 — расшифровка, 0 — выход." << endl;
+
+    do {
+        cout << "Выберите режим (0 — выход, 1 — шифрование, 2 — расшифровка): ";
+        if (!(cin >> action)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        if (action > 2) {
+            cout << "Неверный выбор режима." << endl;
+        } else if (action > 0) {
+            cout << "Введите строку: ";
+            getline(cin, msgLine);
+
+            wstring msgW = str8_to_w(msgLine);
+            wstring clean = stripSpaces(msgW);
+
+            if (onlyCyrillic(clean)) {
+                if (action == 1) {
+                    // ШИФРОВАНИЕ: преобразуем в верхний регистр перед шифрованием
+                    clean = toUpperCyr(clean);
+                    wstring enc = cipher.encrypt(clean);
+                    cout << "Зашифровано: " << w_to_str8(enc) << endl;
+                } else {
+                    // РАСШИФРОВКА: оставляем оригинальный регистр для ввода
+                    // (можно также преобразовать в верхний регистр для consistency)
+                    wstring dec = cipher.decrypt(clean);
+                    cout << "Расшифровано: " << w_to_str8(dec) << endl;
+                }
+            } else {
+                cout << "Можно использовать только кириллицу." << endl;
+            }
+        }
+    } while (action != 0);
+
     return 0;
 }

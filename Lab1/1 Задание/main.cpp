@@ -1,93 +1,105 @@
 #include <iostream>
 #include <locale>
 #include <codecvt>
+#include <algorithm>
+#include <cwctype>
+#include <limits>
 #include "modAlphaCipher.h"
-using namespace std;
 
-bool isValid(const wstring& s)
+using namespace std;
+ 
+bool onlyCyrillic(const wstring& s)
 {
-    wstring russianAlphabet = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-    for (auto c : s) {
-        if (russianAlphabet.find(c) == wstring::npos) {
-            return false;
-        }
+    wstring ABC = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    for (auto ch : s) {
+        if (iswspace(ch)) continue;
+        if (ABC.find(ch) == wstring::npos) return false;
     }
     return true;
 }
 
-wstring toUpperRussian(const wstring& s)
+wstring toUpperCyr(const wstring& s)
 {
-    wstring result = s;
+    wstring res = s;
     wstring lower = L"абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
     wstring upper = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-    
-    for (auto& c : result) {
+    for (auto& c : res) {
         size_t pos = lower.find(c);
-        if (pos != wstring::npos) {
+        if (pos != wstring::npos)
             c = upper[pos];
-        }
     }
-    return result;
+    return res;
 }
 
-wstring stringToWstring(const string& str)
+wstring stripSpaces(const wstring& s)
 {
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
-    return converter.from_bytes(str);
+    wstring out;
+    out.reserve(s.size());
+    for (wchar_t ch : s)
+        if (!iswspace(ch))
+            out.push_back(ch);
+    return out;
+}
+wstring str8_to_w(const string& s)
+{
+    wstring_convert<codecvt_utf8<wchar_t>> conv;
+    return conv.from_bytes(s);
 }
 
-string wstringToString(const wstring& wstr)
+string w_to_str8(const wstring& ws)
 {
-    wstring_convert<codecvt_utf8<wchar_t>> converter;
-    return converter.to_bytes(wstr);
+    wstring_convert<codecvt_utf8<wchar_t>> conv;
+    return conv.to_bytes(ws);
 }
 
 int main()
 {
     setlocale(LC_ALL, "ru_RU.UTF-8");
-    
-    string key_input;
-    string text_input;
-    unsigned op;
-    
-    cout << "Шифр готов. Введите ключ: ";
-    getline(cin, key_input);
-    wstring key = stringToWstring(key_input);
-    key = toUpperRussian(key);
-    
-    if (!isValid(key)) {
-        cerr << "Ключ недействителен! Используйте только русские буквы." << endl;
+
+    string keyLine;
+    string msgLine;
+    unsigned action;
+
+    cout << "Введите ключ: ";
+    getline(cin, keyLine);
+    wstring keyW = toUpperCyr(str8_to_w(keyLine));
+
+    if (!onlyCyrillic(keyW)) {
+        cerr << "Некорректный ключ: допускаются русские буквы." << endl;
         return 1;
     }
-    cout << "Ключ загружен" << endl;
-    modAlphaCipher cipher(key);
-    
+    cout << "Ключ загружен." << endl;
+
+    modAlphaCipher cipher(keyW);
+
     do {
-        cout << "Шифр готов. Выберите операцию (0-выход, 1-шифрование, 2-расшифрование): ";
-        cin >> op;
-        cin.ignore();
-        
-        if (op > 2) {
-            cout << "Неверная операция" << endl;
-        } else if (op > 0) {
-            cout << "Введите текст: ";
-            getline(cin, text_input);
-            wstring text = stringToWstring(text_input);
-            text = toUpperRussian(text);
-            
-            if (isValid(text)) {
-                if (op == 1) {
-                    wstring encrypted = cipher.encrypt(text);
-                    cout << "Зашифрованный текст: " << wstringToString(encrypted) << endl;
+        cout << "Выберите режим (0 — выход, 1 — шифрование, 2 — расшифровка): ";
+        if (!(cin >> action))
+            return 0;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        if (action > 2) {
+        cout << "Неверный выбор режима." << endl;
+        } else if (action > 0) {
+            cout << "Введите строку: ";
+            getline(cin, msgLine);
+
+            wstring msgW = toUpperCyr(str8_to_w(msgLine));
+            wstring clean = stripSpaces(msgW);  
+
+            if (onlyCyrillic(clean)) {
+                if (action == 1) {
+                    wstring enc = cipher.encrypt(clean);
+                    cout << "Зашифровано: " << w_to_str8(enc) << endl;
                 } else {
-                    wstring decrypted = cipher.decrypt(text);
-                    cout << "Расшифрованный текст: " << wstringToString(decrypted) << endl;
+                    wstring dec = cipher.decrypt(clean);
+                    cout << "Расшифровано: " << w_to_str8(dec) << endl;
                 }
             } else {
-                cout << "Операция отменена: неверный текст. Используйте только русские буквы." << endl;
+                cout << "Некорректный ввод: используйте кириллицу." << endl;
             }
         }
-    } while (op != 0);
-    
+    } while (action != 0);
+
     return 0;
 }
