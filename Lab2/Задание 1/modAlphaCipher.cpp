@@ -1,86 +1,118 @@
 #include "modAlphaCipher.h"
-#include <iostream>
-#include <algorithm>
-#include <stdexcept>
-#include <locale>
-#include <codecvt>
-
 using namespace std;
 
-modAlphaCipher::modAlphaCipher(const wstring& skey)
+modAlphaCipher::modAlphaCipher(const wstring& keyStr)
 {
-
-    for (size_t i = 0; i < numAlpha.size(); ++i) {
-        alphaNum[numAlpha[i]] = i;
+    for (unsigned k = 0; k < alphabet.size(); ++k) {
+        alphaIndex[alphabet[k]] = k;
     }
-    
-    if (skey.empty()) {
-        throw invalid_argument("Ключ не может быть пустым");
-    }
-    
-    key = convert(skey);
+    keySeq = toNums(getValidKey(keyStr));
 }
 
-vector<int> modAlphaCipher::convert(const wstring& text)
+vector<int> modAlphaCipher::toNums(const wstring& s)
 {
-    vector<int> result;
-    result.reserve(text.size()); 
-    
-    for (wchar_t c : text) {
-        auto it = alphaNum.find(c);
-        if (it == alphaNum.end()) {
-            throw invalid_argument("Обнаружен недопустимый символ в тексте");
+    vector<int> resultNums;
+    resultNums.reserve(s.size());
+    for (auto sym : s) {
+        resultNums.push_back(alphaIndex[sym]);
+    }
+    return resultNums;
+}
+
+wstring modAlphaCipher::toStr(const vector<int>& v)
+{
+    wstring resultStr;
+    resultStr.reserve(v.size());
+    for (auto idx : v) {
+        resultStr.push_back(alphabet[idx]);
+    }
+    return resultStr;
+}
+
+wstring modAlphaCipher::getValidKey(const wstring& s)
+{
+    wstring tmp;
+    for (auto c : s) {
+        if (!iswspace(c)) {
+            tmp.push_back(c);
         }
-        result.push_back(it->second);
     }
-    return result;
-}
-
-wstring modAlphaCipher::convert(const vector<int>& numbers)
-{
-    wstring result;
-    result.reserve(numbers.size()); 
     
-    for (int num : numbers) {
-        if (num < 0 || num >= static_cast<int>(numAlpha.size())) {
-            throw out_of_range("Недопустимое числовое значение символа");
+    if (tmp.empty())
+        throw cipher_error("Empty key");
+    
+    wstring lower = L"абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    wstring upper = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    
+    for (auto & c : tmp) {
+        // Преобразование строчных в прописные
+        size_t pos = lower.find(c);
+        if (pos != wstring::npos) {
+            c = upper[pos];
+        } else if (alphabet.find(c) == wstring::npos) {
+            throw cipher_error("Invalid key");
         }
-        result.push_back(numAlpha[num]);
     }
-    return result;
+    return tmp;
 }
 
-wstring modAlphaCipher::encrypt(const wstring& open_text)
+wstring modAlphaCipher::getValidOpenText(const wstring& s)
 {
-    if (open_text.empty()) {
-        throw invalid_argument("Текст для шифрования не может быть пустым");
+    wstring tmp;
+    wstring lower = L"абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    wstring upper = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+    
+    for (auto c : s) {
+        if (!iswspace(c)) { // Игнорируем пробелы
+            if (alphabet.find(c) != wstring::npos) {
+                tmp.push_back(c);
+            } else {
+                
+                size_t pos = lower.find(c);
+                if (pos != wstring::npos) {
+                    tmp.push_back(upper[pos]); 
+                }
+            }
+        }
     }
-    
-    vector<int> work = convert(open_text);
-    size_t key_size = key.size();
-    size_t alpha_size = numAlpha.size();
-    
-    for (size_t i = 0; i < work.size(); ++i) {
-        work[i] = (work[i] + key[i % key_size]) % alpha_size;
-    }
-    
-    return convert(work);
+    if (tmp.empty())
+        throw cipher_error("Empty open text");
+    return tmp;
 }
 
-// Расшифрование текста
-wstring modAlphaCipher::decrypt(const wstring& cipher_text)
+wstring modAlphaCipher::getValidCipherText(const wstring& s)
 {
-    if (cipher_text.empty()) {
-        throw invalid_argument("Текст для расшифрования не может быть пустым");
+    wstring tmp;
+    for (auto c : s) {
+        if (!iswspace(c)) {
+            tmp.push_back(c);
+        }
     }
     
-    vector<int> work = convert(cipher_text);
-    size_t key_size = key.size();
-    size_t alpha_size = numAlpha.size();
+    if (tmp.empty())
+        throw cipher_error("Empty cipher text");
     
-    for (size_t i = 0; i < work.size(); ++i) {
-        work[i] = (work[i] + alpha_size - key[i % key_size]) % alpha_size;
+    for (auto c : tmp) {
+        if (alphabet.find(c) == wstring::npos)
+            throw cipher_error("Invalid cipher text");
     }
-    
-    return convert(work);
+    return tmp;
+}
+
+wstring modAlphaCipher::encrypt(const wstring& plain)
+{
+    vector<int> tmp = toNums(getValidOpenText(plain));
+    for (unsigned p = 0; p < tmp.size(); ++p) {
+        tmp[p] = (tmp[p] + keySeq[p % keySeq.size()]) % alphabet.size();
+    }
+    return toStr(tmp);
+}
+
+wstring modAlphaCipher::decrypt(const wstring& cipher)
+{
+    vector<int> tmp = toNums(getValidCipherText(cipher));
+    for (unsigned p = 0; p < tmp.size(); ++p) {
+        tmp[p] = (tmp[p] + alphabet.size() - keySeq[p % keySeq.size()]) % alphabet.size();
+    }
+    return toStr(tmp);
 }

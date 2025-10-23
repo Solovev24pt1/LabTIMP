@@ -1,8 +1,6 @@
-#include <vector>
+#pragma once
 #include <string>
-#include <map>
-#include <locale>
-#include <codecvt>
+#include <vector>
 #include <stdexcept>
 using namespace std;
 
@@ -14,22 +12,18 @@ public:
         invalid_argument(what_arg) {}
 };
 
-class modAlphaCipher
+class Table
+
 {
     
 private:
-    wstring alphabet = L"АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-    map<wchar_t, int> alphaIndex;
-    vector<int> keySeq;
-    vector<int> toNums(const wstring& s);
-    wstring toStr(const vector<int>& v);
-    wstring getValidKey(const wstring& s);
+    int cols;
+    int getValidKey(const int key);
     wstring getValidOpenText(const wstring& s);
     wstring getValidCipherText(const wstring& s);
     
 public:
-    modAlphaCipher() = delete;
-    modAlphaCipher(const wstring& keyStr);
+    explicit Table(int key);
     wstring encrypt(const wstring& plain);
     wstring decrypt(const wstring& cipher);
 };
