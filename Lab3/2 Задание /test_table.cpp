@@ -83,13 +83,26 @@ SUITE(EncryptTest)
         CHECK_THROW(cipher->encrypt(L"1234"), cipher_error);
     }
     
-    TEST(KeyEqualsOne) {
-        Table cipher(1);
-        CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher.encrypt(L"ПРИВЕТМИР"));
-    }
-    
     TEST_FIXTURE(Key3Fixture, StringWithPunctuation) {
         CHECK_WIDE_EQUAL(L"ИТРРЕИПВМ", cipher->encrypt(L"ПРИВЕТ, МИР"));
+    }
+    
+    TEST_FIXTURE(Key3Fixture, ShortString) {
+        CHECK_WIDE_EQUAL(L"П", cipher->encrypt(L"П"));
+    }
+    
+    TEST_FIXTURE(Key3Fixture, TwoCharString) {
+        CHECK_WIDE_EQUAL(L"ИП", cipher->encrypt(L"ПИ"));
+    }
+
+    TEST(NonMultipleKeyLength) {
+        Table cipher(5);
+        CHECK_WIDE_EQUAL(L"ЕВРИИРМПТ", cipher.encrypt(L"ПРИВЕТМИР"));
+    }
+    
+    TEST(NonMultipleKeyLength2) {
+        Table cipher(11);
+        CHECK_WIDE_EQUAL(L"РИМТЕВИРП", cipher.encrypt(L"ПРИВЕТМИР"));
     }
 }
 
@@ -119,13 +132,26 @@ SUITE(DecryptTest)
         CHECK_THROW(cipher->decrypt(L"1234"), cipher_error);
     }
     
-    TEST(KeyEqualsOneDecrypt) {
-        Table cipher(1);
-        CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher.decrypt(L"ПРИВЕТМИР"));
+    TEST_FIXTURE(Key3Fixture, ShortStringDecrypt) {
+        CHECK_WIDE_EQUAL(L"П", cipher->decrypt(L"П"));
     }
     
+    TEST_FIXTURE(Key3Fixture, TwoCharStringDecrypt) {
+        CHECK_WIDE_EQUAL(L"ПИ", cipher->decrypt(L"ИП"));
+    }
+
     TEST_FIXTURE(Key3Fixture, ValidCipherText) {
         CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher->decrypt(L"ИТРРЕИПВМ"));
+    }
+
+    TEST(NonMultipleKeyLengthDecrypt) {
+        Table cipher(5);
+        CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher.decrypt(L"ЕВРИИРМПТ"));
+    }
+    
+    TEST(NonMultipleKeyLengthDecrypt2) {
+        Table cipher(11);
+        CHECK_WIDE_EQUAL(L"ПРИВЕТМИР", cipher.decrypt(L"РИМТЕВИРП"));
     }
 }
 
