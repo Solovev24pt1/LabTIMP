@@ -1,0 +1,159 @@
+\hypertarget{test_8cpp}{}\doxysection{Файл Desktop/4лб/task1/test.cpp}
+\label{test_8cpp}\index{Desktop/4лб/task1/test.cpp@{Desktop/4лб/task1/test.cpp}}
+
+
+Модульные тесты для класса \mbox{\hyperlink{classmodAlphaCipher}{mod\+Alpha\+Cipher}}.  
+
+
+{\ttfamily \#include $<$Unit\+Test++/\+Unit\+Test++.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include \char`\"{}mod\+Alpha\+Cipher.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для test.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structKeyBFixture}{Key\+BFixture}}
+\begin{DoxyCompactList}\small\item\em Фикстура для тестов с ключом \char`\"{}Б\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Макросы}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{test_8cpp_aa80d071057ef4f2cf8b9ee98e761e32a}{CHECK\+\_\+\+WIDE\+\_\+\+EQUAL}}(expected,  actual)~    CHECK\+\_\+\+EQUAL(\mbox{\hyperlink{test_8cpp_a83483625914c476b3b93d44056ced5fc}{wide\+To\+Utf8}}(expected), \mbox{\hyperlink{test_8cpp_a83483625914c476b3b93d44056ced5fc}{wide\+To\+Utf8}}(actual))
+\begin{DoxyCompactList}\small\item\em Макрос для сравнения широких строк в тестах \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{test_8cpp_a83483625914c476b3b93d44056ced5fc}{wide\+To\+Utf8}} (const wstring \&ws)
+\begin{DoxyCompactList}\small\item\em Преобразование широкой строки в UTF-\/8. \end{DoxyCompactList}\item 
+wstring \mbox{\hyperlink{test_8cpp_ac5744ae81369e93803d39fc5dd6e7fa3}{utf8\+To\+Wide}} (const string \&s)
+\begin{DoxyCompactList}\small\item\em Преобразование строки UTF-\/8 в широкую строку \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_ac744746d1a94326837403a8c5bbdcdc8}{SUITE}} (Constructor\+Test)
+\begin{DoxyCompactList}\small\item\em Тестовый набор для конструктора \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_a965686b3dd5f389de483a13d946c7e98}{SUITE}} (Encrypt\+Test)
+\begin{DoxyCompactList}\small\item\em Тестовый набор для метода encrypt. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_a5e94e37c8411fe2be8c274d87df13db4}{SUITE}} (Decrypt\+Test)
+\begin{DoxyCompactList}\small\item\em Тестовый набор для метода decrypt. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Главная функция тестов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Модульные тесты для класса \mbox{\hyperlink{classmodAlphaCipher}{mod\+Alpha\+Cipher}}. 
+
+\begin{DoxyAuthor}{Автор}
+Соловьев Арсений Евгеньевич 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+2025
+\end{DoxyDate}
+Тестирование функциональности шифрования и обработки ошибок 
+
+\doxysubsection{Макросы}
+\mbox{\Hypertarget{test_8cpp_aa80d071057ef4f2cf8b9ee98e761e32a}\label{test_8cpp_aa80d071057ef4f2cf8b9ee98e761e32a}} 
+\index{test.cpp@{test.cpp}!CHECK\_WIDE\_EQUAL@{CHECK\_WIDE\_EQUAL}}
+\index{CHECK\_WIDE\_EQUAL@{CHECK\_WIDE\_EQUAL}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{CHECK\_WIDE\_EQUAL}{CHECK\_WIDE\_EQUAL}}
+{\footnotesize\ttfamily \#define CHECK\+\_\+\+WIDE\+\_\+\+EQUAL(\begin{DoxyParamCaption}\item[{}]{expected,  }\item[{}]{actual }\end{DoxyParamCaption})~    CHECK\+\_\+\+EQUAL(\mbox{\hyperlink{test_8cpp_a83483625914c476b3b93d44056ced5fc}{wide\+To\+Utf8}}(expected), \mbox{\hyperlink{test_8cpp_a83483625914c476b3b93d44056ced5fc}{wide\+To\+Utf8}}(actual))}
+
+
+
+Макрос для сравнения широких строк в тестах 
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{test.cpp@{test.cpp}!main@{main}}
+\index{main@{main}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Главная функция тестов 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & количество аргументов \\
+\hline
+{\em argv} & массив аргументов \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+результат выполнения тестов 
+\end{DoxyReturn}
+\mbox{\Hypertarget{test_8cpp_ac744746d1a94326837403a8c5bbdcdc8}\label{test_8cpp_ac744746d1a94326837403a8c5bbdcdc8}} 
+\index{test.cpp@{test.cpp}!SUITE@{SUITE}}
+\index{SUITE@{SUITE}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{SUITE()}{SUITE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily SUITE (\begin{DoxyParamCaption}\item[{Constructor\+Test}]{ }\end{DoxyParamCaption})}
+
+
+
+Тестовый набор для конструктора 
+
+Проверяет различные сценарии инициализации ключа \mbox{\Hypertarget{test_8cpp_a5e94e37c8411fe2be8c274d87df13db4}\label{test_8cpp_a5e94e37c8411fe2be8c274d87df13db4}} 
+\index{test.cpp@{test.cpp}!SUITE@{SUITE}}
+\index{SUITE@{SUITE}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{SUITE()}{SUITE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily SUITE (\begin{DoxyParamCaption}\item[{Decrypt\+Test}]{ }\end{DoxyParamCaption})}
+
+
+
+Тестовый набор для метода decrypt. 
+
+Проверяет различные сценарии расшифрования \mbox{\Hypertarget{test_8cpp_a965686b3dd5f389de483a13d946c7e98}\label{test_8cpp_a965686b3dd5f389de483a13d946c7e98}} 
+\index{test.cpp@{test.cpp}!SUITE@{SUITE}}
+\index{SUITE@{SUITE}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{SUITE()}{SUITE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily SUITE (\begin{DoxyParamCaption}\item[{Encrypt\+Test}]{ }\end{DoxyParamCaption})}
+
+
+
+Тестовый набор для метода encrypt. 
+
+Проверяет различные сценарии шифрования \mbox{\Hypertarget{test_8cpp_ac5744ae81369e93803d39fc5dd6e7fa3}\label{test_8cpp_ac5744ae81369e93803d39fc5dd6e7fa3}} 
+\index{test.cpp@{test.cpp}!utf8ToWide@{utf8ToWide}}
+\index{utf8ToWide@{utf8ToWide}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{utf8ToWide()}{utf8ToWide()}}
+{\footnotesize\ttfamily wstring utf8\+To\+Wide (\begin{DoxyParamCaption}\item[{const string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Преобразование строки UTF-\/8 в широкую строку 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em s} & строка в UTF-\/8 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+широкая строка 
+\end{DoxyReturn}
+\mbox{\Hypertarget{test_8cpp_a83483625914c476b3b93d44056ced5fc}\label{test_8cpp_a83483625914c476b3b93d44056ced5fc}} 
+\index{test.cpp@{test.cpp}!wideToUtf8@{wideToUtf8}}
+\index{wideToUtf8@{wideToUtf8}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{wideToUtf8()}{wideToUtf8()}}
+{\footnotesize\ttfamily string wide\+To\+Utf8 (\begin{DoxyParamCaption}\item[{const wstring \&}]{ws }\end{DoxyParamCaption})}
+
+
+
+Преобразование широкой строки в UTF-\/8. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em ws} & широкая строка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+строка в UTF-\/8 
+\end{DoxyReturn}

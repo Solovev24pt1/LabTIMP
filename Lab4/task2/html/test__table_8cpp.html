@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Шифр маршрутной перестановки: Файл Desktop/4лб/task2/test_table.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Шифр маршрутной перестановки
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_e04ae2849dfa520b4ee2c9f7e9ff15de.html">Desktop</a></li><li class="navelem"><a class="el" href="dir_45ed579941e24f441e1872448a0736a9.html">4лб</a></li><li class="navelem"><a class="el" href="dir_a149c1042d206cabc3afdfeaa0156656.html">task2</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#define-members">Макросы</a> &#124;
+<a href="#func-members">Функции</a>  </div>
+  <div class="headertitle">
+<div class="title">Файл test_table.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Модульные тесты для класса <a class="el" href="classTable.html" title="Класс для шифрования табличной маршрутной перестановкой">Table</a>.  
+<a href="#details">Подробнее...</a></p>
+<div class="textblock"><code>#include &lt;UnitTest++/UnitTest++.h&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;locale&gt;</code><br />
+<code>#include &lt;codecvt&gt;</code><br />
+<code>#include &quot;<a class="el" href="table_8h_source.html">table.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Граф включаемых заголовочных файлов для test_table.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="test__table_8cpp__incl.png" border="0" usemap="#aDesktop_24_xD0_xBB_xD0_xB1_2task2_2test__table_8cpp" alt=""/></div>
+<map name="aDesktop_24_xD0_xBB_xD0_xB1_2task2_2test__table_8cpp" id="aDesktop_24_xD0_xBB_xD0_xB1_2task2_2test__table_8cpp">
+<area shape="rect" title="Модульные тесты для класса Table." alt="" coords="227,5,372,47"/>
+<area shape="rect" title=" " alt="" coords="5,95,193,121"/>
+<area shape="rect" title=" " alt="" coords="287,169,346,196"/>
+<area shape="rect" title=" " alt="" coords="269,95,330,121"/>
+<area shape="rect" title=" " alt="" coords="355,95,428,121"/>
+<area shape="rect" href="table_8h.html" title="Заголовочный файл для модуля табличной маршрутной перестановки" alt="" coords="453,95,519,121"/>
+<area shape="rect" title=" " alt="" coords="405,169,468,196"/>
+<area shape="rect" title=" " alt="" coords="492,169,579,196"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structKey3Fixture.html">Key3Fixture</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Фикстура для тестов с ключом 3.  <a href="structKey3Fixture.html#details">Подробнее...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Макросы</h2></td></tr>
+<tr class="memitem:aa80d071057ef4f2cf8b9ee98e761e32a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__table_8cpp.html#aa80d071057ef4f2cf8b9ee98e761e32a">CHECK_WIDE_EQUAL</a>(expected,  actual)&#160;&#160;&#160;    CHECK_EQUAL(<a class="el" href="test__table_8cpp.html#a83483625914c476b3b93d44056ced5fc">wideToUtf8</a>(expected), <a class="el" href="test__table_8cpp.html#a83483625914c476b3b93d44056ced5fc">wideToUtf8</a>(actual))</td></tr>
+<tr class="memdesc:aa80d071057ef4f2cf8b9ee98e761e32a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Макрос для сравнения широких строк в тестах  <a href="test__table_8cpp.html#aa80d071057ef4f2cf8b9ee98e761e32a">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa80d071057ef4f2cf8b9ee98e761e32a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a83483625914c476b3b93d44056ced5fc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__table_8cpp.html#a83483625914c476b3b93d44056ced5fc">wideToUtf8</a> (const wstring &amp;ws)</td></tr>
+<tr class="memdesc:a83483625914c476b3b93d44056ced5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Преобразование широкой строки в UTF-8.  <a href="test__table_8cpp.html#a83483625914c476b3b93d44056ced5fc">Подробнее...</a><br /></td></tr>
+<tr class="separator:a83483625914c476b3b93d44056ced5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5744ae81369e93803d39fc5dd6e7fa3"><td class="memItemLeft" align="right" valign="top">wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__table_8cpp.html#ac5744ae81369e93803d39fc5dd6e7fa3">utf8ToWide</a> (const string &amp;s)</td></tr>
+<tr class="memdesc:ac5744ae81369e93803d39fc5dd6e7fa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Преобразование строки UTF-8 в широкую строку  <a href="test__table_8cpp.html#ac5744ae81369e93803d39fc5dd6e7fa3">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac5744ae81369e93803d39fc5dd6e7fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac744746d1a94326837403a8c5bbdcdc8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__table_8cpp.html#ac744746d1a94326837403a8c5bbdcdc8">SUITE</a> (ConstructorTest)</td></tr>
+<tr class="memdesc:ac744746d1a94326837403a8c5bbdcdc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Тестовый набор для конструктора <a class="el" href="classTable.html" title="Класс для шифрования табличной маршрутной перестановкой">Table</a>.  <a href="test__table_8cpp.html#ac744746d1a94326837403a8c5bbdcdc8">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac744746d1a94326837403a8c5bbdcdc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a965686b3dd5f389de483a13d946c7e98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__table_8cpp.html#a965686b3dd5f389de483a13d946c7e98">SUITE</a> (EncryptTest)</td></tr>
+<tr class="memdesc:a965686b3dd5f389de483a13d946c7e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Тестовый набор для метода encrypt.  <a href="test__table_8cpp.html#a965686b3dd5f389de483a13d946c7e98">Подробнее...</a><br /></td></tr>
+<tr class="separator:a965686b3dd5f389de483a13d946c7e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e94e37c8411fe2be8c274d87df13db4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__table_8cpp.html#a5e94e37c8411fe2be8c274d87df13db4">SUITE</a> (DecryptTest)</td></tr>
+<tr class="memdesc:a5e94e37c8411fe2be8c274d87df13db4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Тестовый набор для метода decrypt.  <a href="test__table_8cpp.html#a5e94e37c8411fe2be8c274d87df13db4">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5e94e37c8411fe2be8c274d87df13db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="test__table_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memdesc:a3c04138a5bfe5d72780bb7e82a18e627"><td class="mdescLeft">&#160;</td><td class="mdescRight">Главная функция тестов  <a href="test__table_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Модульные тесты для класса <a class="el" href="classTable.html" title="Класс для шифрования табличной маршрутной перестановкой">Table</a>. </p>
+<dl class="section author"><dt>Автор</dt><dd>Соловьев Арсений Евгеньевич </dd></dl>
+<dl class="section version"><dt>Версия</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>2025</dd></dl>
+<p>Тестирование функциональности шифрования табличной перестановкой и обработки ошибок </p>
+</div><h2 class="groupheader">Макросы</h2>
+<a id="aa80d071057ef4f2cf8b9ee98e761e32a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa80d071057ef4f2cf8b9ee98e761e32a">&#9670;&nbsp;</a></span>CHECK_WIDE_EQUAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CHECK_WIDE_EQUAL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">expected, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">actual&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;    CHECK_EQUAL(<a class="el" href="test__table_8cpp.html#a83483625914c476b3b93d44056ced5fc">wideToUtf8</a>(expected), <a class="el" href="test__table_8cpp.html#a83483625914c476b3b93d44056ced5fc">wideToUtf8</a>(actual))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Макрос для сравнения широких строк в тестах </p>
+
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Главная функция тестов </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>количество аргументов </td></tr>
+    <tr><td class="paramname">argv</td><td>массив аргументов </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>результат выполнения тестов </dd></dl>
+
+</div>
+</div>
+<a id="ac744746d1a94326837403a8c5bbdcdc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac744746d1a94326837403a8c5bbdcdc8">&#9670;&nbsp;</a></span>SUITE() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SUITE </td>
+          <td>(</td>
+          <td class="paramtype">ConstructorTest&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Тестовый набор для конструктора <a class="el" href="classTable.html" title="Класс для шифрования табличной маршрутной перестановкой">Table</a>. </p>
+<p>Проверяет различные сценарии инициализации ключа (количества столбцов) </p>
+
+</div>
+</div>
+<a id="a5e94e37c8411fe2be8c274d87df13db4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e94e37c8411fe2be8c274d87df13db4">&#9670;&nbsp;</a></span>SUITE() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SUITE </td>
+          <td>(</td>
+          <td class="paramtype">DecryptTest&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Тестовый набор для метода decrypt. </p>
+<p>Проверяет различные сценарии расшифрования табличной перестановкой </p>
+
+</div>
+</div>
+<a id="a965686b3dd5f389de483a13d946c7e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a965686b3dd5f389de483a13d946c7e98">&#9670;&nbsp;</a></span>SUITE() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SUITE </td>
+          <td>(</td>
+          <td class="paramtype">EncryptTest&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Тестовый набор для метода encrypt. </p>
+<p>Проверяет различные сценарии шифрования табличной перестановкой </p>
+
+</div>
+</div>
+<a id="ac5744ae81369e93803d39fc5dd6e7fa3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5744ae81369e93803d39fc5dd6e7fa3">&#9670;&nbsp;</a></span>utf8ToWide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wstring utf8ToWide </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Преобразование строки UTF-8 в широкую строку </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>строка в UTF-8 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>широкая строка </dd></dl>
+
+</div>
+</div>
+<a id="a83483625914c476b3b93d44056ced5fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83483625914c476b3b93d44056ced5fc">&#9670;&nbsp;</a></span>wideToUtf8()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string wideToUtf8 </td>
+          <td>(</td>
+          <td class="paramtype">const wstring &amp;&#160;</td>
+          <td class="paramname"><em>ws</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Преобразование широкой строки в UTF-8. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ws</td><td>широкая строка </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>строка в UTF-8 </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

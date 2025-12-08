@@ -1,0 +1,4 @@
+<map id="KeyBFixture" name="KeyBFixture">
+<area shape="rect" id="node1" title="Фикстура для тестов с ключом &quot;Б&quot;." alt="" coords="21,95,121,121"/>
+<area shape="rect" id="node2" href="$classmodAlphaCipher.html" title="Класс для шифрования методом Гронсфельда" alt="" coords="5,5,136,32"/>
+</map>

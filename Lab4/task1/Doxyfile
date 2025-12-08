@@ -1,5 +1,5 @@
 PROJECT_NAME = "Шифратор Гронсфельда"
-INPUT = /home/stud/Desktop/4лб
+INPUT = /home/stud/Desktop/4лб/task1
 FILE_PATTERNS = *.h *.cpp
 EXTRACT_ALL = YES
 GENERATE_HTML = YES

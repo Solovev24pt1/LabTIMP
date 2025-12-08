@@ -1,0 +1,97 @@
+\hypertarget{main_8cpp}{}\doxysection{Файл Desktop/4лб/task1/main.cpp}
+\label{main_8cpp}\index{Desktop/4лб/task1/main.cpp@{Desktop/4лб/task1/main.cpp}}
+
+
+Главный модуль программы для шифрования/расшифрования текста  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$locale$>$}\newline
+{\ttfamily \#include $<$codecvt$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cwctype$>$}\newline
+{\ttfamily \#include $<$limits$>$}\newline
+{\ttfamily \#include \char`\"{}mod\+Alpha\+Cipher.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+wstring \mbox{\hyperlink{main_8cpp_ae4523e6a824b26c927c85719b430c3d2}{str8\+\_\+to\+\_\+w}} (const string \&s)
+\begin{DoxyCompactList}\small\item\em Преобразование строки UTF-\/8 в широкую строку \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{main_8cpp_a3bd7446697f8822ef50d84e4ff6d1842}{w\+\_\+to\+\_\+str8}} (const wstring \&ws)
+\begin{DoxyCompactList}\small\item\em Преобразование широкой строки в строку UTF-\/8. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Главная функция программы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Главный модуль программы для шифрования/расшифрования текста 
+
+\begin{DoxyAuthor}{Автор}
+Соловьев Арсений Евгеньевич 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+2025
+\end{DoxyDate}
+Реализует пользовательский интерфейс для работы с шифром Гронсфельда 
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Главная функция программы 
+
+\begin{DoxyReturn}{Возвращает}
+код завершения программы
+\end{DoxyReturn}
+Реализует диалоговый интерфейс для шифрования/расшифрования \mbox{\Hypertarget{main_8cpp_ae4523e6a824b26c927c85719b430c3d2}\label{main_8cpp_ae4523e6a824b26c927c85719b430c3d2}} 
+\index{main.cpp@{main.cpp}!str8\_to\_w@{str8\_to\_w}}
+\index{str8\_to\_w@{str8\_to\_w}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{str8\_to\_w()}{str8\_to\_w()}}
+{\footnotesize\ttfamily wstring str8\+\_\+to\+\_\+w (\begin{DoxyParamCaption}\item[{const string \&}]{s }\end{DoxyParamCaption})}
+
+
+
+Преобразование строки UTF-\/8 в широкую строку 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em s} & строка в UTF-\/8 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+широкая строка 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a3bd7446697f8822ef50d84e4ff6d1842}\label{main_8cpp_a3bd7446697f8822ef50d84e4ff6d1842}} 
+\index{main.cpp@{main.cpp}!w\_to\_str8@{w\_to\_str8}}
+\index{w\_to\_str8@{w\_to\_str8}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{w\_to\_str8()}{w\_to\_str8()}}
+{\footnotesize\ttfamily string w\+\_\+to\+\_\+str8 (\begin{DoxyParamCaption}\item[{const wstring \&}]{ws }\end{DoxyParamCaption})}
+
+
+
+Преобразование широкой строки в строку UTF-\/8. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em ws} & широкая строка \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+строка в UTF-\/8 
+\end{DoxyReturn}

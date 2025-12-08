@@ -1,0 +1,137 @@
+\hypertarget{classTable}{}\doxysection{Класс Table}
+\label{classTable}\index{Table@{Table}}
+
+
+Класс для шифрования табличной маршрутной перестановкой  
+
+
+
+
+{\ttfamily \#include $<$table.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTable_a4cd90c67c976b6b5d6c96a7ffbfc563f}{Table}} (int key)
+\begin{DoxyCompactList}\small\item\em Конструктор с установкой ключа \end{DoxyCompactList}\item 
+wstring \mbox{\hyperlink{classTable_a83ccfae4376b54eff71df87757bb16e6}{encrypt}} (const wstring \&plain)
+\begin{DoxyCompactList}\small\item\em Шифрование открытого текста \end{DoxyCompactList}\item 
+wstring \mbox{\hyperlink{classTable_a39e90edb353837e30bcf77d09df3a03a}{decrypt}} (const wstring \&cipher)
+\begin{DoxyCompactList}\small\item\em Расшифрование зашифрованного текста \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для шифрования табличной маршрутной перестановкой 
+
+Реализует шифрование и расшифрование текста методом табличной перестановки с маршрутом записи\+: по горизонтали слева направо, сверху вниз с маршрутом считывания\+: сверху вниз, справа налево 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classTable_a4cd90c67c976b6b5d6c96a7ffbfc563f}\label{classTable_a4cd90c67c976b6b5d6c96a7ffbfc563f}} 
+\index{Table@{Table}!Table@{Table}}
+\index{Table@{Table}!Table@{Table}}
+\doxysubsubsection{\texorpdfstring{Table()}{Table()}}
+{\footnotesize\ttfamily Table\+::\+Table (\begin{DoxyParamCaption}\item[{int}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Конструктор с установкой ключа 
+
+Конструктор класса \mbox{\hyperlink{classTable}{Table}}.
+
+
+\begin{DoxyParams}{Аргументы}
+{\em key} & количество столбцов таблицы \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & если ключ невалиден \\
+\hline
+\end{DoxyExceptions}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classTable_a39e90edb353837e30bcf77d09df3a03a}\label{classTable_a39e90edb353837e30bcf77d09df3a03a}} 
+\index{Table@{Table}!decrypt@{decrypt}}
+\index{decrypt@{decrypt}!Table@{Table}}
+\doxysubsubsection{\texorpdfstring{decrypt()}{decrypt()}}
+{\footnotesize\ttfamily wstring Table\+::decrypt (\begin{DoxyParamCaption}\item[{const wstring \&}]{cipher }\end{DoxyParamCaption})}
+
+
+
+Расшифрование зашифрованного текста 
+
+Расшифрование зашифрованного текста табличной перестановкой
+
+
+\begin{DoxyParams}{Аргументы}
+{\em cipher} & зашифрованный текст для расшифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+расшифрованный текст 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & если текст невалиден\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em cipher} & зашифрованный текст для расшифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+расшифрованный текст
+\end{DoxyReturn}
+Обратный процесс шифрованию с учетом маршрутов 
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & если зашифрованный текст невалиден \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classTable_a83ccfae4376b54eff71df87757bb16e6}\label{classTable_a83ccfae4376b54eff71df87757bb16e6}} 
+\index{Table@{Table}!encrypt@{encrypt}}
+\index{encrypt@{encrypt}!Table@{Table}}
+\doxysubsubsection{\texorpdfstring{encrypt()}{encrypt()}}
+{\footnotesize\ttfamily wstring Table\+::encrypt (\begin{DoxyParamCaption}\item[{const wstring \&}]{plain }\end{DoxyParamCaption})}
+
+
+
+Шифрование открытого текста 
+
+Шифрование открытого текста табличной перестановкой
+
+
+\begin{DoxyParams}{Аргументы}
+{\em plain} & открытый текст для шифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+зашифрованный текст 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & если текст невалиден\\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Аргументы}
+{\em plain} & открытый текст для шифрования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+зашифрованный текст
+\end{DoxyReturn}
+Маршрут записи\+: по горизонтали слева направо, сверху вниз
+
+Маршрут считывания\+: сверху вниз, справа налево 
+\begin{DoxyExceptions}{Исключения}
+{\em \mbox{\hyperlink{classcipher__error}{cipher\+\_\+error}}} & если открытый текст невалиден \\
+\hline
+\end{DoxyExceptions}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Desktop/4лб/task2/\mbox{\hyperlink{table_8h}{table.\+h}}\item 
+Desktop/4лб/task2/\mbox{\hyperlink{table_8cpp}{table.\+cpp}}\end{DoxyCompactItemize}

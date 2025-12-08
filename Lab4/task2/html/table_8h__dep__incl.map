@@ -1,0 +1,6 @@
+<map id="Desktop/4лб/task2/table.h" name="Desktop/4лб/task2/table.h">
+<area shape="rect" id="node1" title="Заголовочный файл для модуля табличной маршрутной перестановки" alt="" coords="175,5,320,47"/>
+<area shape="rect" id="node2" href="$main_8cpp.html" title="Главный модуль программы для шифрования/расшифрования табличной перестановкой" alt="" coords="5,95,151,136"/>
+<area shape="rect" id="node3" href="$table_8cpp.html" title="Реализация методов класса Table для табличной маршрутной перестановки" alt="" coords="175,95,320,136"/>
+<area shape="rect" id="node4" href="$test__table_8cpp.html" title="Модульные тесты для класса Table." alt="" coords="344,95,489,136"/>
+</map>
